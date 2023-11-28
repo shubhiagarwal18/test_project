@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Update Profile</h2>
+<form method="post" action="{% url 'update_profile' %}">
+  {% csrf_token %} {{ form.as_p }} {{ form.errors }}
+  <button type="submit">Update Profile</button>
+</form>
+{% endblock %}

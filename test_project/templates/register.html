@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/register.css' %}" />
+    <title>Register</title>
+  </head>
+  <body style="background: url(https://dashboard.dfgateway.com/static/assets/images/user/kiosk-bg.jpg);">
+    <h1 style="text-align: center; font-family: emoji; color: #fff">Register</h1>
+    <form method="post" action="{% url 'register' %}">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" 
+        style="width: 100%;
+             background: linear-gradient(
+            135deg,
+            #052f33,
+            #052f33 10%,
+            #11b6c7
+          ) !important;
+        ">Register</button>
+    </form>
+  </body>
+</html>

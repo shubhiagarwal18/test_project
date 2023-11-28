@@ -1,0 +1,113 @@
+<!-- templates/products_by_category.html -->
+
+{% extends 'base.html' %} {% load static %}
+<!-- Load the static tag at the beginning of the file -->
+
+{% block content %}
+<!-- <div class="container-fluid"> -->
+<div
+  class="container-fluid"
+  style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: linear-gradient(
+      135deg,
+      #052f33,
+      #052f33 10%,
+      #11b6c7
+    ) !important;
+    color: #fff; */
+  "
+>
+  <h6
+    style="
+      font-family: 'Roboto', sans-serif;
+      /* background: aliceblue; */
+      padding: 1rem;
+    "
+  >
+    Products by Category : {{ category_name }}
+  </h6>
+
+  <a
+    href="{% url 'home' %}"
+    class="back-link"
+    style="
+      border: none;
+      color: #000;
+      /* width: 100%; */
+      height: 40px;
+      text-decoration: none;
+      /* color: #fff; */
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 25px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 500;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      outline: none;
+    "
+    >Back</a
+  >
+</div>
+
+<div class="product-card">
+  {% for product in products %}
+
+  <div class="product-tumb">
+    <img
+      src="{{ product.image|slice:'17:' }}"
+      alt="{{ product.name }}"
+      class="img-fluid"
+    />
+    <div class="product-details">
+      <h4><a href=""> {{ product.name }}</a></h4>
+      <p>{{ product.description }}</p>
+      <div class="product-bottom-details">
+        <div class="product-price"><small>₹{{product.mrp}}</small>{{product.price }}</div>
+        <div class="product-links">
+          <a href=""><i class="fa fa-heart"></i></a>
+          <a href=""><i class="fa fa-shopping-cart"></i></a>
+        </div>
+      </div>
+      <a
+        href="{% url 'submit_review' product_id=product.id %}"
+        style="
+          border: none;
+          color: #000;
+          width: 100%;
+          height: 40px;
+          text-decoration: none;
+          /* color: #fff; */
+          border-radius: 5px;
+          text-align: center;
+          padding: 10px 25px;
+          font-family: 'Lato', sans-serif;
+          font-weight: 500;
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          display: inline-block;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          outline: none;
+        "
+        >Submit a Review</a
+      >
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+<!-- </div> -->
+{% endblock %}

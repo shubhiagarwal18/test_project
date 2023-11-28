@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/css/productList.css" /> -->
+    <link rel="stylesheet" href="{% static '/css/productList.css' %}" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- {% for i in products %} {{i.name}} {{i.description}} Rs {{i.price}} {% endfor %} -->
+    {% for i in products %}
+    <div class="product-card">
+      <div class="product-tumb">
+        <img src="https://i.imgur.com/xdbHo4E.png" alt="" />
+      </div>
+      <div class="product-details">
+        <span class="product-catagory">{{i.category.name}}</span>
+        <h4><a href="">{{i.name}}</a></h4>
+        <p>{{i.description}}</p>
+        <div class="product-bottom-details">
+          <div class="product-price">${{i.price}}</div>
+          <div class="product-links">
+            <a href=""><i class="fa fa-heart"></i></a>
+            <a href=""><i class="fa fa-shopping-cart"></i></a>
+          </div>
+        </div>
+        <a href="{% url 'submit_review' product_id=product.id %}"
+          >Submit a Review</a
+        >
+      </div>
+    </div>
+    {% endfor %}
+  </body>
+</html>
